@@ -47,14 +47,14 @@ export const NFTLaunchpadProvider: FC<{ children: ReactNode }> = ({ children }) 
           endedProject = [],
           liveProject = []
         for (let i = 0; i < launchpadData.length; i++) {
-          if (
-            (parseFloat(launchpadData[i].whitelist) ) ||
-            (!parseFloat(launchpadData[i].whitelist))
-          )
+          // if (
+          //   (parseFloat(launchpadData[i].whitelist) ) ||
+          //   (!parseFloat(launchpadData[i].whitelist))
+          // )
             upcomingProject.push(launchpadData[i])
-          if (parseFloat(launchpadData[i].startsOn) < Date.now() && launchpadData[i].ended)
+          //if (parseFloat(launchpadData[i].startsOn) < Date.now() && launchpadData[i].ended)
             endedProject.push(launchpadData[i])
-          else liveProject.push(launchpadData[i])
+           liveProject.push(launchpadData[i])
         }
 
         setEndedNFTProjects(endedProject)
