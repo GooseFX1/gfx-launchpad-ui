@@ -66,7 +66,6 @@ const CAROUSEL_WRAPPER = styled.div`
 `
 
 const ENDED_TEXT = styled.div`
-  margin-top: 150px;
   font-weight: 700;
   font-size: 30px;
   color: ${({ theme }) => theme.text7};

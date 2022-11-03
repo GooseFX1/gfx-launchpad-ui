@@ -22,9 +22,8 @@ const NFT_DETAILS = styled.div<{ $navCollapsed: boolean }>`
 
   .detailsContainer {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin: 20px 70px 200px 0px;
+    justify-content: space-around;
+    margin: 20px 70px 50px 0px;
   }
 
   ${({ theme }) => css`

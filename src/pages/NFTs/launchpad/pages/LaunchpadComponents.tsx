@@ -367,6 +367,7 @@ const SOCIAL_ICON = styled.button`
 
 const DARK_DIV = styled.div`
   width: 45vw;
+  margin-top: 75px;
 
   .dark-1 {
     //biggest
@@ -402,10 +403,10 @@ const DARK_DIV = styled.div`
     border-radius: 20px;
   }
   .image-border {
-    margin-left: 180px;
+    margin-left: 165px;
     background: linear-gradient(96.79deg, #f7931a 4.25%, #ac1cc7 97.61%);
     position: absolute;
-    width: 567px;
+    width: 40%;
     height: 567px;
     border-radius: 20px;
     margin-top: -7px;
@@ -433,7 +434,7 @@ const LIVE_BTN = styled.div`
   border: 1.5px solid #ffffff;
   backdrop-filter: blur(23.9091px);
   position: absolute;
-  margin-left: 575px;
+  margin-left: 560px;
   margin-top: 30px;
   z-index: 299;
   border-radius: 10px;
@@ -473,7 +474,7 @@ export const MintProgressBar = ({ minted, totalNFTs }: { minted: number; totalNF
 export const SWITCH_HOLDER = styled.div<{ $navCollapsed: boolean }>`
   position: absolute;
   top: 0;
-  right: 0;
+  right: 30px;
   margin-top: calc(100px - ${({ $navCollapsed }) => ($navCollapsed ? '80px' : '0px')});
 `
 

@@ -49,6 +49,10 @@ const CAROUSEL_WRAPPER = styled.div`
     justify-content: center;
     padding-left: ${({ theme }) => theme.margin(2)};
     padding-right: ${({ theme }) => theme.margin(2)};
+
+    .slick-track{
+      width: 100% !important;
+    }
   }
   .slick-slider {
     height: 100%;
@@ -62,7 +66,6 @@ const CAROUSEL_WRAPPER = styled.div`
 const UPCOMING_TEXT = styled.div`
   font-weight: 700;
   font-size: 30px;
-  margin-top: 100px;
   margin-bottom: 40px;
 `
 
@@ -89,8 +92,11 @@ const SLIDER_ITEM = styled.div`
     .nft-img {
       border-radius: 15px;
       padding-bottom: 0px;
-      width: 460px !important;
+      width: 90%;
       height: 460px;
+    }
+    .ant-card-cover{
+      margin: 0;
     }
     .ant-card-body {
       text-align: center;
@@ -111,7 +117,7 @@ const FLEX = styled.div`
 
 const NFT_META = styled.div`
   position: absolute;
-  width: 460px;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

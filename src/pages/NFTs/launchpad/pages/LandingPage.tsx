@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { useNavCollapse } from '../../../../context'
 import { ModalSlide } from '../../../../components/ModalSlide'
 import { MODAL_TYPES } from '../../../../constants'
+import { TwitterBanner } from '../launchpadComp/TwitterBanner'
 
 const WRAPPER = styled.div`
   max-width: 99%;
@@ -34,6 +35,7 @@ export const LandingPage: FC = () => {
         <UpcomingCollections />
         <LaunchCollection />
         <EndedCollections />
+        <TwitterBanner />
       </WRAPPER>
     </>
   )

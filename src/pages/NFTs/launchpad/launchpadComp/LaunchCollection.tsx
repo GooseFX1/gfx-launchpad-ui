@@ -5,20 +5,14 @@ import LaunchImg from '../../../../assets/launch.svg'
 import { SOCIAL_MEDIAS } from '../../../../constants'
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
   background: linear-gradient(96.79deg, #f7931a 4.25%, #ac1cc7 97.61%);
   border-radius: 15px;
-  margin-right: 40px !important ;
-  margin-bottom: 70px;
+  margin: 70px 40px 70px 0 !important;
 
   .startContainer {
     height: 295px;
-    padding-right: 100px;
-    position: relative;
     display: flex;
     align-items: center;
-    justify-content: start;
   }
 `
 const TEXT = styled.div`
