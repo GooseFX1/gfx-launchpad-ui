@@ -128,12 +128,8 @@ export const Footer: FC = () => {
       <PrivacyPolicy setVisible={setPrivacyPolicyVisible} visible={privacyPolicyVisible} />
       <TermsOfService setVisible={setTermsOfServiceVisible} visible={termsOfServiceVisible} />
       <TEXT>
-        Copyright © {new Date().getFullYear()} Goose Labs, Inc. All rights reserved. Please trade with your own
-        discretion and according to your location’s laws and regulations. Security audits by{' '}
-        <LINK href="https://halborn.com" target="_blank" rel="noopener noreferrer">
-          Halborn
-        </LINK>
-        , please use at your own risk
+        Copyright © {new Date().getFullYear()} Multichain Advisors, Inc. All rights reserved. Please trade with your own
+        discretion and according to your location’s laws and regulations.
       </TEXT>
 
       <Row justify="space-between" align="middle">

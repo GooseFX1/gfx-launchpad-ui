@@ -61,7 +61,7 @@ const TITLE = styled.h1`
   font-weight: 700;
   font-size: 60px;
   line-height: 73px;
-  margin-top: 50px;
+  margin: 0 !important;
   color: ${({ theme }) => theme.text1};
 `
 
@@ -91,9 +91,13 @@ const DESCRIPTION = styled.p`
   color: ${({ theme }) => theme.text4};
 `
 const FEATURED_IMG = styled.div`
-  width: 85px;
-  height: 90px;
-  margin-right: 25px;
+`
+const HEADER = styled.div`
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #2cb6b2;
+  font-size: 30px;
+  font-weight: bold;
 `
 
 const BACK_IMG = styled.div`
@@ -184,11 +188,8 @@ export const FeaturedLaunch: FC<{
   return (
     <>
       <NFT_DETAILS {...rest} $navCollapsed={isCollapsed}>
-        {featuredDisplay === undefined ? (
-          <SpaceBetweenDiv style={{ margin: '0 70px 200px 0' }}>
-            <SkeletonCommon width="42vw" height="500px" borderRadius="10px" />
-            <SkeletonCommon width="42vw" height="500px" borderRadius="10px" />
-          </SpaceBetweenDiv>
+        {!featuredDisplay  ? (
+              <></>
         ) : (
           <div>
             {featuredDisplay.length > 0 ? (
@@ -200,15 +201,14 @@ export const FeaturedLaunch: FC<{
                         <img src={`/img/assets/arrow-left${mode}.svg`} alt="arrow" />{' '}
                       </BACK_IMG>
                       <FEATURED_IMG>
-                        <img src="/img/assets/Launchpad.png" alt="arrow" />{' '}
+                        <img src="/img/assets/multichainLogo.png" alt="arrow" />{' '}
                       </FEATURED_IMG>
-                      Featured Launch
                     </YELLOW>
+                    <HEADER>Featured Launch</HEADER>
                     <TITLE className="rs-name">{featuredDisplay[0]?.collectionName}</TITLE>
-                    <SUBTITLE>{featuredDisplay[0]?.tagLine}</SUBTITLE>
                     <br />
                     <Row justify="space-between" align="middle" style={{ marginRight: '50px' }}>
-                      <ITEMS>{`Items ${featuredDisplay[0]?.items}`}</ITEMS>
+                      <ITEMS>{`Items: ${featuredDisplay[0]?.items}`}</ITEMS>
                       <ITEMS>
                         <GetNftPrice item={featuredDisplay[0]} />
                       </ITEMS>
@@ -243,7 +243,10 @@ export const FeaturedLaunch: FC<{
                 </GRAPHIC_IMG>
               </div>
             ) : (
-              <></>
+              <SpaceBetweenDiv style={{ margin: '0 70px 200px 0' }}>
+              <SkeletonCommon width="42vw" height="500px" borderRadius="10px" />
+              <SkeletonCommon width="42vw" height="500px" borderRadius="10px" />
+            </SpaceBetweenDiv>
             )}
           </div>
         )}

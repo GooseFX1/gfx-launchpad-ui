@@ -5,7 +5,7 @@ import { useDarkMode } from '../../context'
 import { CenteredDiv, CenteredImg, SVGToPrimary2, SVGToWhite } from '../../styles'
 import tw from 'twin.macro'
 
-const TABS = ['/swap', '/trade', '/NFTs', '/farm']
+const TABS = ['/NFTs']
 
 const LABEL = styled.span<{ $mode: string; $hover: boolean }>`
   ${tw`h-[3.5] w-[7vw] flex justify-center items-center text-smallest capitalize sm:text-regular`};
