@@ -16,6 +16,11 @@ const WRAPPER = styled.div`
   * {
     font-family: ${({ theme }) => theme.fontFamily};
   }
+
+  @media(max-width: 500px){
+    max-width: 100%;
+    padding-left: 0;
+  }
 `
 
 export const LandingPage: FC = () => {

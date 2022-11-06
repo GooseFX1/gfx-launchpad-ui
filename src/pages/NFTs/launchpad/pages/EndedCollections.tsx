@@ -1,12 +1,13 @@
-import React, { useState, useEffect, FC } from 'react'
-import Slider from 'react-slick'
-import styled from 'styled-components'
-import { Row, Card } from 'antd'
-import { useHistory } from 'react-router-dom'
-import { SkeletonCommon } from '../../Skeleton/SkeletonCommon'
-import { useNFTLaunchpad } from '../../../../context/nft_launchpad'
-import { GetNftPrice } from './FeaturedLaunch'
-import { useUSDCToggle } from '../../../../context/nft_launchpad'
+import React, { useState, useEffect, FC } from "react";
+import Slider from "react-slick";
+import styled from "styled-components";
+import { Row, Card } from "antd";
+import { useHistory } from "react-router-dom";
+import { SkeletonCommon } from "../../Skeleton/SkeletonCommon";
+import { useNFTLaunchpad } from "../../../../context/nft_launchpad";
+import { GetNftPrice } from "./FeaturedLaunch";
+import { useUSDCToggle } from "../../../../context/nft_launchpad";
+import { checkMobile } from "../../../../utils";
 
 const CAROUSEL_WRAPPER = styled.div`
   position: relative;
@@ -63,21 +64,33 @@ const CAROUSEL_WRAPPER = styled.div`
   .slick-slide {
     margin-right: ${({ theme }) => theme.margin(3)};
   }
-`
+`;
 
 const ENDED_TEXT = styled.div`
   font-weight: 700;
   font-size: 30px;
   color: ${({ theme }) => theme.text7};
   margin-bottom: 40px;
-`
+
+  @media(max-width: 500px){
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-bottom: 30px;
+  }
+`;
 
 const NFT_INFO = styled.div`
   font-weight: 600;
   line-height: 22px;
   font-size: 18px !important;
   margin-bottom: 10px;
-`
+
+  @media(max-width: 500px){
+    font-size: 14px !important;
+    font-weight: 600;
+  }
+`;
 const SLIDER_ITEM = styled.div`
   position: relative;
   display: flex;
@@ -85,17 +98,28 @@ const SLIDER_ITEM = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  @media(max-width: 500px){
+    margin-right: 25px;
+  }
   .sweep-card.failed {
     opacity: 0.5;
   }
   .sweep-card {
     border: none;
+    @media(max-width: 500px){
+      height: 280px;
+      width: 280px;
+    }
     .nft-img {
       border-radius: 15px;
       padding-bottom: 0px;
       opacity: 0.4;
       width: 300px !important;
       height: 300px;
+      @media(max-width: 500px){
+        height: 226px;
+        width: 280px !important;
+      }
     }
     .ant-card-body {
       text-align: center;
@@ -134,7 +158,7 @@ const SLIDER_ITEM = styled.div`
     text-align: center;
     margin-top: 10px;
   }
-`
+`;
 
 export const NFT_SOLD = styled.div`
   position: absolute;
@@ -146,10 +170,19 @@ export const NFT_SOLD = styled.div`
   flex-direction: column;
   bottom: 0px;
 
+  @media(max-width: 500px){
+    width: 280px;
+    }
+  }
+
   .collection-name {
     font-weight: 600;
     font-size: 25px;
     line-height: 30px;
+
+    @media(max-width: 500px){
+      font-size: 22px;
+    }
   }
   .sold-text {
     font-weight: 700;
@@ -157,8 +190,14 @@ export const NFT_SOLD = styled.div`
     font-size: 20px;
     line-height: 24px;
     text-align: center;
+
+    @media(max-width: 500px){
+      margin-top: 8px;
+      font-weight: 600;
+
+    }
   }
-`
+`;
 const NFT_META = styled.div`
   position: absolute;
   width: 300px;
@@ -166,16 +205,35 @@ const NFT_META = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 87px;
-  background: linear-gradient(68.66deg, rgba(255, 255, 255, 0.1) 21.47%, rgba(255, 255, 255, 0.015) 102.44%);
+  background: linear-gradient(
+    68.66deg,
+    rgba(255, 255, 255, 0.1) 21.47%,
+    rgba(255, 255, 255, 0.015) 102.44%
+  );
   backdrop-filter: blur(60px);
   border-radius: 15px 10px 10px 15px;
   bottom: 0px;
+  @media(max-width: 500px){
+    height: 74px;
+    width: 280px;
+  }
   .column {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 12px;
   }
+`;
+
+const ENDED_NFTS = styled.div`
+  display: flex;
+  padding: 0 20px;
+  overflow-x: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
 `
 
 const EndedCollections: FC = () => {
@@ -189,28 +247,38 @@ const EndedCollections: FC = () => {
     slidesToShow: 3,
     arrows: false,
     variableWidth: true,
-    nextArrow: <img src={`${process.env.PUBLIC_URL}/img/assets/home-slider-next.svg`} alt="banner-next" />,
-    prevArrow: <img src={`${process.env.PUBLIC_URL}/img/assets/home-slider-next.svg`} alt="banner-previous" />
-  }
-  const loading = [1, 2, 3, 4, 5]
-  const [endedList, setEndedList] = useState([])
-  const { endedNFTProjects, dataFetched } = useNFTLaunchpad()
-  const history = useHistory()
-  const { isUSDC } = useUSDCToggle()
+    nextArrow: (
+      <img
+        src={`${process.env.PUBLIC_URL}/img/assets/home-slider-next.svg`}
+        alt="banner-next"
+      />
+    ),
+    prevArrow: (
+      <img
+        src={`${process.env.PUBLIC_URL}/img/assets/home-slider-next.svg`}
+        alt="banner-previous"
+      />
+    ),
+  };
+  const loading = [1, 2, 3, 4, 5];
+  const [endedList, setEndedList] = useState([]);
+  const { endedNFTProjects, dataFetched } = useNFTLaunchpad();
+  const history = useHistory();
+  const { isUSDC } = useUSDCToggle();
   useEffect(() => {
     setEndedList(
       isUSDC
-        ? endedNFTProjects.filter((data) => data.currency === 'USDC')
-        : endedNFTProjects.filter((data) => data.currency === 'SOL')
-    )
-  }, [endedNFTProjects, isUSDC])
+        ? endedNFTProjects.filter((data) => data.currency === "USDC")
+        : endedNFTProjects.filter((data) => data.currency === "SOL")
+    );
+  }, [endedNFTProjects, isUSDC]);
   const FLEX = styled.div`
     display: flex;
     margin: 24px;
     .space {
       margin-right: 24px;
     }
-  `
+  `;
   return (
     <>
       {!dataFetched ? (
@@ -218,7 +286,11 @@ const EndedCollections: FC = () => {
           <FLEX>
             {loading.map((_, key) => (
               <div className="space" key={key}>
-                <SkeletonCommon width="460px" height="460px" borderRadius="15px" />
+                <SkeletonCommon
+                  width="460px"
+                  height="460px"
+                  borderRadius="15px"
+                />
               </div>
             ))}
           </FLEX>
@@ -228,45 +300,100 @@ const EndedCollections: FC = () => {
       )}
       {endedList && endedList.length > 0 ? (
         <>
-          <ENDED_TEXT>Ended</ENDED_TEXT>
           {endedList.length > 0 ? (
             <>
-              <Row justify="center" align="middle" className="imageRow">
-                <CAROUSEL_WRAPPER>
-                  <Slider {...settings}>
-                    {endedList.map((item, index) => (
-                      <SLIDER_ITEM key={index} onClick={() => history.push(`/NFTs/launchpad/${item?.urlName}`)}>
-                        <Card
-                          cover={
-                            <>
-                              <img className="nft-img" src={item.coverUrl} alt="NFT" />
-                              <NFT_SOLD>
-                                <div className="collection-name">{item?.collectionName}</div>
-                                <div className="sold-text">SOLD OUT</div>
-                              </NFT_SOLD>
-                              <NFT_META>
-                                <span className="column">
-                                  <NFT_INFO> Items {item?.items} </NFT_INFO>
-                                  <NFT_INFO>
-                                    <GetNftPrice item={item} />
-                                  </NFT_INFO>
-                                </span>
-                              </NFT_META>
-                            </>
+              <ENDED_TEXT>Ended</ENDED_TEXT>
+              {!checkMobile() ? (
+                <Row justify="center" align="middle" className="imageRow">
+                  <CAROUSEL_WRAPPER>
+                    <Slider {...settings}>
+                      {endedList.map((item, index) => (
+                        <SLIDER_ITEM
+                          key={index}
+                          onClick={() =>
+                            history.push(`/NFTs/launchpad/${item?.urlName}`)
                           }
-                          className="sweep-card"
-                        ></Card>
-                      </SLIDER_ITEM>
-                    ))}
-                  </Slider>
-                </CAROUSEL_WRAPPER>
-              </Row>
+                        >
+                          <Card
+                            cover={
+                              <>
+                                <img
+                                  className="nft-img"
+                                  src={item.coverUrl}
+                                  alt="NFT"
+                                />
+                                <NFT_SOLD>
+                                  <div className="collection-name">
+                                    {item?.collectionName}
+                                  </div>
+                                  <div className="sold-text">SOLD OUT</div>
+                                </NFT_SOLD>
+                                <NFT_META>
+                                  <span className="column">
+                                    <NFT_INFO> Items: {item?.items} </NFT_INFO>
+                                    <NFT_INFO>
+                                      <GetNftPrice item={item} />
+                                    </NFT_INFO>
+                                  </span>
+                                </NFT_META>
+                              </>
+                            }
+                            className="sweep-card"
+                          ></Card>
+                        </SLIDER_ITEM>
+                      ))}
+                    </Slider>
+                  </CAROUSEL_WRAPPER>
+                </Row>
+              ) : (
+                <ENDED_NFTS>
+                      {endedList.map((item, index) => (
+                        <SLIDER_ITEM
+                          key={index}
+                          onClick={() =>
+                            history.push(`/NFTs/launchpad/${item?.urlName}`)
+                          }
+                        >
+                          <Card
+                            cover={
+                              <>
+                                <img
+                                  className="nft-img"
+                                  src={item.coverUrl}
+                                  alt="NFT"
+                                />
+                                <NFT_SOLD>
+                                  <div className="collection-name">
+                                    {item?.collectionName}
+                                  </div>
+                                  <div className="sold-text">SOLD OUT</div>
+                                </NFT_SOLD>
+                                <NFT_META>
+                                  <span className="column">
+                                    <NFT_INFO> Items: {item?.items} </NFT_INFO>
+                                    <NFT_INFO>
+                                      <GetNftPrice item={item} />
+                                    </NFT_INFO>
+                                  </span>
+                                </NFT_META>
+                              </>
+                            }
+                            className="sweep-card"
+                          ></Card>
+                        </SLIDER_ITEM>
+                      ))}
+                </ENDED_NFTS>
+              )}
             </>
           ) : (
             <FLEX>
               {loading.map((_, key) => (
                 <div className="space" key={key}>
-                  <SkeletonCommon width="300px" height="300px" borderRadius="15px" />
+                  <SkeletonCommon
+                    width="300px"
+                    height="300px"
+                    borderRadius="15px"
+                  />
                 </div>
               ))}
             </FLEX>
@@ -276,7 +403,7 @@ const EndedCollections: FC = () => {
         <></>
       )}
     </>
-  )
-}
+  );
+};
 
-export default EndedCollections
+export default EndedCollections;
