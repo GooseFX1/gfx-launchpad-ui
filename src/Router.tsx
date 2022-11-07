@@ -19,7 +19,11 @@ export const Router: FC = () => {
     return (
 
       <BrowserRouter>
-        {window.location.pathname === '/' && <Redirect from="/" to="/NFTs" />}
+        {window.location.pathname === '/' && <Redirect from="/" to="/NFTs/launchpad" />}
+        {window.location.pathname === '/NFTs' && <Redirect from="/NFTs" to="/NFTs/launchpad" />}
+        {window.location.pathname === '/NFTs/' && <Redirect from="/NFTs/" to="/NFTs/launchpad" />}
+
+
 
         <NavCollapseProvider>
           <AppLayout>
@@ -35,11 +39,11 @@ export const Router: FC = () => {
                   <AdminWrapper />
                 </NFTAdminProvider>
               </Route>
-              <Route path="/NFTs">
+              {/* <Route path="/NFTs">
                 <NFTProfileProvider>
                   <NFTs />
                 </NFTProfileProvider>
-              </Route>
+              </Route> */}
               <Route>
                 <GenericNotFound />
               </Route>
