@@ -47,7 +47,7 @@ const SHARE_BTN = styled.div`
   }
 `
 const MINT_BTN = styled.div<{ active: boolean }>`
-  background: linear-gradient(96.79deg, #f7931a 4.25%, #ac1cc7 97.61%);
+  background: linear-gradient(94deg, #123e50 1%, #01a29f 100%);
   border-radius: 47px;
   width: 260px;
   height: 50px;

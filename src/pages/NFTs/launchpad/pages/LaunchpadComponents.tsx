@@ -22,7 +22,7 @@ const ROADMAP_WRAPPER = styled.div`
     height: 60px;
     width: 60px;
     margin-left: 2%;
-    margin-top: -60px;
+    margin-top: -50px;
     border: none;
   }
   .verticalLine {
@@ -34,6 +34,7 @@ const ROADMAP_WRAPPER = styled.div`
     height: 5px;
     margin-top: -60px;
     margin-left: 20px;
+    filter: invert(85%) sepia(60%) saturate(323%) hue-rotate(115deg) brightness(89%) contrast(93%);
   }
   .verticalContainer {
     @media (max-width: 500px) {
@@ -184,7 +185,7 @@ const INFO_DIV_LIGHT = styled.div`
   height: 45px;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(96.79deg, #f7931a 4.25%, #ac1cc7 97.61%);
+  background: linear-gradient(96deg, #00a5a1 1%, #bdeded 99%);
   border-radius: 47px !important;
   padding: 1px;
 
@@ -355,6 +356,7 @@ const VESTING_WRAPPER = styled.div`
     text-align: center;
     font-weight: 600;
     font-size: 22px;
+    color: #b5b5b5;
     .percentText {
       font-weight: 600;
       font-size: 22px;
@@ -568,11 +570,9 @@ export const MintProgressBar = ({
       <ProgressBarBG>
         <Progress
           className="progress-bar"
-          percent={mintPercent}
+          percent={81}
           strokeWidth={40}
-          strokeColor={
-            "linear-gradient(96.79deg, #5855FF 4.25%, #DC1FFF 97.61%)"
-          }
+          strokeColor={'#00a5a1'}
         />
         <>
           <span className="mintedNFT"> {minted ? minted : 0} </span>

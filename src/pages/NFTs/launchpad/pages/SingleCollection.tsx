@@ -57,7 +57,7 @@ export const RIGHT_SECTION_TABS = styled.div<{ activeTab: string }>`
       font-family: Montserrat;
     }
     .ant-tabs-content-holder {
-      ${tw`sm:h-[350px] sm:pb-8 sm:mb-[50px] h-[450px] z-0 pt-8 pb-16 rounded-t-none rounded-b-half`}
+      ${tw`sm:h-[350px] sm:pb-8 h-[450px] z-0 pt-8 pb-16 rounded-t-none rounded-b-half`}
       background-color: ${({ theme }) => theme.bg9}; !important;
       transform: translateY(-32px);
       .ant-tabs-content {
@@ -140,12 +140,12 @@ const NFT_COVER = styled.div`
   .image-border {
     ${tw`w-[608px] h-[608px] p-[5px] rounded-bigger mt-8 mb-[30px] 
     sm:w-[90%] sm:h-[350px] sm:rounded-[18px] sm:p-[3px] sm:my-[30px] sm:mx-auto`}
-    background: linear-gradient(96.79deg, #f7931a 4.25%, #ac1cc7 97.61%);
+    background: linear-gradient(135deg, #00a5a1 0%, #eeeeee 100%);
   }
   .ended-img {
     ${tw`h-[550px] w-[550px] rounded-bigger p-[5px] mt-8 
     mb-[30px] opacity-40 sm:h-[354px] sm:w-[90%] sm:my-0 sm:mx-auto`}
-    background: linear-gradient(96.79deg, #f7931a 4.25%, #ac1cc7 97.61%);
+    background: linear-gradient(135deg, #00a5a1 0%, #eeeeee 100%);
   }
 
   .sold-text {
@@ -176,12 +176,12 @@ const HEIGHT = styled.div`
 const SUMMARY_TAB_CONTENT = styled.div`
   ${tw`sm:my-5 sm:mx-auto sm:font-medium sm:text-tiny sm:text-[#eeeeee] 
   sm:leading-normal m-auto px-[30px] mt-[6%] font-semibold text-[20px]`}
-  color: ${({ theme }) => theme.text4};
+  color: ${({ theme }) => theme.text27};
   div {
     ${tw`text-center`}
     span {
       ${tw`text-center`}
-      color: ${({ theme }) => theme.primary3};
+      color: forestgreen;
     }
   }
 `
@@ -192,7 +192,7 @@ const TIER_WRAPPER = styled.div`
     ${tw`h-[55px] w-full mb-5 rounded-[8px]`}
     border: 1px solid ${({ theme }) => theme.text1h};
     &.active {
-      border-image-source: linear-gradient(92deg, #f7931a 0%, #ac1cc7 100%);
+      border-image-source: linear-gradient(92deg, #039b9a 0%, #eeeeee 100%);
       border-image-slice: 1;
     }
     .rightSection {
@@ -236,6 +236,19 @@ const ROW = styled.div`
   ${tw`flex flex-row justify-start items-center sm:justify-center`}
 `
 
+const LOGO = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 22px 0;
+
+  span{
+    font-size: 22px;
+    color: #636363;
+    margin-right: 10px;
+  }
+`
+
 const getRemaningTime = (time): string => {
   const startsOn = parseFloat(time)
   const timeDiffrence = startsOn - Date.now()
@@ -271,9 +284,9 @@ export const SingleCollection: FC = () => {
     (selectedProject?.whitelist && parseInt(selectedProject?.whitelist) < Date.now()) ||
     (!selectedProject?.whitelist && parseInt(selectedProject?.startsOn) < Date.now())
   const displayProgressBar =
-    isLive && cndyValues ? (
+    true ? (
       <MintProgressBar minted={cndyValues?.itemsRedeemed} totalNFTs={selectedProject?.items} />
-    ) : isLive && !cndyValues ? (
+    ) : true ? (
       checkMobile() ? (
         <SkeletonCommon
           style={{
@@ -294,7 +307,7 @@ export const SingleCollection: FC = () => {
     ) : (
       <MintStarts time={selectedProject?.whitelist || selectedProject?.startsOn} />
     )
-  let ProgressBar = selectedProject?.items ? (
+  let ProgressBar = true ? (
     displayProgressBar
   ) : checkMobile() ? (
     <SkeletonCommon
@@ -306,7 +319,7 @@ export const SingleCollection: FC = () => {
   ) : (
     <SkeletonCommon style={{ marginTop: '20px' }} width="540px" height={'70px'} borderRadius="10px" />
   )
-  if (selectedProject?.ended) ProgressBar = <></>
+  //if (selectedProject?.ended) ProgressBar = <></>
 
   return (
     <HEIGHT style={{ height: checkMobile() ? '100%' : isCollapsed ? '90vh' : '82vh' }}>
@@ -325,13 +338,13 @@ export const SingleCollection: FC = () => {
                 </COLLECTION_NAME>
               )}
             </ROW>
-            {selectedProject?.tagLine ? (
+            {/* {selectedProject?.tagLine ? (
               <TAG_LINE>{selectedProject?.tagLine}</TAG_LINE>
             ) : (
               <TAG_LINE>
                 <SkeletonCommon width="100%" height="100%" borderRadius="10px" />
               </TAG_LINE>
-            )}
+            )} */}
             {selectedProject?.items && checkMobile() ? (
               <>
                 <Socials />
@@ -398,7 +411,7 @@ export const SingleCollection: FC = () => {
               {selectedProject?.summary ? (
                 <div>
                   <RIGHT_SECTION_TABS activeTab={'4'}>
-                    <Tabs defaultActiveKey={'2'}>
+                    <Tabs defaultActiveKey={'1'}>
                       <TabPane tab="Summary" key="1">
                         <SUMMARY_TAB_CONTENT>
                           <div>{selectedProject?.summary}</div>
@@ -477,7 +490,7 @@ export const SingleCollection: FC = () => {
                       </TabPane>
                     </Tabs>
                   </RIGHT_SECTION_TABS>
-                  {!selectedProject?.ended ? <MintButton isLive={isLive} /> : <></>}
+                  {true ? <MintButton isLive={isLive} /> : <></>}
                 </div>
               ) : (
                 <>
@@ -486,6 +499,10 @@ export const SingleCollection: FC = () => {
               )}
             </>
           </div>
+          <LOGO>
+            <span>Powered By</span>
+            <img src="/img/assets/gfxLogo.png" alt="gfx-logo" />
+          </LOGO>
         </div>
         {!checkMobile() ? (
           <div className="rightPart">

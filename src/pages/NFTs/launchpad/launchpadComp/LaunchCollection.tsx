@@ -5,15 +5,6 @@ import LaunchImg from "../../../../assets/launch.png";
 import { SOCIAL_MEDIAS } from "../../../../constants";
 import { checkMobile } from "../../../../utils";
 
-const Container = styled.div`
-  border-radius: 15px;
-
-  .startContainer {
-    height: 295px;
-    display: flex;
-    align-items: center;
-  }
-`;
 const TEXT = styled.div`
   font-weight: 600;
   font-size: 50px;
@@ -56,11 +47,6 @@ const APPLY_BTN = styled.button`
   }
 `;
 
-const TEXT_CONTAINER = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 130px;
-`;
 
 const WRAPPER = styled.div`
   position: relative;

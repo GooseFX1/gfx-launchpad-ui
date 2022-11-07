@@ -76,12 +76,12 @@ export const Footer: FC = () => {
   const [privacyPolicyVisible, setPrivacyPolicyVisible] = useState(false)
   const [termsOfServiceVisible, setTermsOfServiceVisible] = useState(false)
   const location = useLocation()
-  const hideFooterArr = [ '/farm', '/analytics']
-  let hideFooter = false
+  const hideFooterArr = [ '/farm', '/analytics', new RegExp('/NFTs/launchpad/[a-zA-Z]')]
+  let hideFooter = 0
   for (let i = 0; i < hideFooterArr.length; i++)
-    hideFooter = hideFooter || location.pathname.startsWith(hideFooterArr[i])
+    hideFooter = location.pathname.search(hideFooterArr[i])
 
-  if ((checkMobile() && hideFooter) || hideFooter) {
+  if ((checkMobile() && !hideFooter) || !hideFooter) {
     return <></>
   }
   if (checkMobile()) {
