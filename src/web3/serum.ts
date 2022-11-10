@@ -1,7 +1,24 @@
 import { Market, MARKETS, OpenOrders } from '@project-serum/serum'
 import { Order } from '@project-serum/serum/lib/market'
 import { AccountInfo, Connection, PublicKey } from '@solana/web3.js'
-import { AVAILABLE_MARKETS, MarketSide } from '../context'
+import { MarketSide } from '../context'
+import { SUPPORTED_TOKEN_LIST } from '../constants'
+
+export const AVAILABLE_MARKETS = (() => {
+  const markets = MARKETS.filter(({ deprecated, name }) => {
+    const ask = (name: string) => name.slice(0, name.indexOf('/'))
+    const isWrappedStableCoin = name[name.indexOf('/') + 1] === 'W'
+    return !deprecated && !isWrappedStableCoin && SUPPORTED_TOKEN_LIST && SUPPORTED_TOKEN_LIST.find((token) => ask(name) === token)
+  })
+  markets.push({
+    name: 'GOFX/USDC',
+    programId: new PublicKey('9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin'),
+    deprecated: false,
+    address: new PublicKey('2wgi2FabNsSDdb8dke9mHFB67QtMYjYa318HpSqyJLDD')
+  })
+  markets.sort((a, b) => a.name.localeCompare(b.name))
+  return markets
+})()
 
 const getLatestBid = async (connection: Connection, pair: string, canBeDeprecated = false) => {
   const [[latestBid]] = (await (await getMarket(connection, pair, canBeDeprecated)).loadBids(connection)).getL2(1)

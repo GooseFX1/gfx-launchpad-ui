@@ -6,9 +6,6 @@ import { Creator } from './pages/NFTs/CreatorPage/Creator'
 import { AdminWrapper } from './pages/NFTs/adminPage/components/AdminWrapper'
 import {
     NavCollapseProvider,
-    NFTProfileProvider,
-    OrderProvider,
-    TradeHistoryProvider,
     NFTAdminProvider
   } from './context'
 import { NFTs } from './pages'
