@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { RewardsPopup } from './RewardsPopup'
-import { FeesPopup } from './FeesPopup'
 //import { GoldenTicketPopup } from '../pages/NFTs/launchpad/pages/LaunchpadComponents'
 import MenuPopup from './popups/MenuPopup'
 import { MODAL_TYPES } from '../constants'
@@ -58,7 +57,6 @@ export const ModalSlide = (props: IModalSlide) => (
       {props.modalType === MODAL_TYPES.SUBMIT && <SubmitPopup rewardToggle={props.rewardToggle} />}
       {props.modalType === MODAL_TYPES.RELAX && <RelaxPopup rewardToggle={props.rewardToggle} />}
       {props.modalType === MODAL_TYPES.CREATOR_DISCLAIMER && <DisclaimerPopup rewardToggle={props.rewardToggle} />}
-      {props.modalType === MODAL_TYPES.FEES && <FeesPopup {...props} />}
       {props.modalType === MODAL_TYPES.APPROVE_PROJECT && <ApprovePopup rewardToggle={props.rewardToggle} />}
       {props.modalType === MODAL_TYPES.REJECT_PROJECT && <RejectPopup rewardToggle={props.rewardToggle} />}
       {props.modalType === MODAL_TYPES.NFT_MENU && <MenuPopup rewardToggle={props.rewardToggle} />}

@@ -70,7 +70,7 @@ export const GenericNotFound = () => {
           status={'action'}
           width={'267px'}
           radius={'20px'}
-          onClick={() => history.push('/swap')}
+          onClick={() => history.push('/NFTs/launchpad')}
         >
           <span> Go Back Home</span>
         </HOME_BTN>
