@@ -8,7 +8,6 @@ import {
     NavCollapseProvider,
     NFTProfileProvider,
     OrderProvider,
-    PriceFeedProvider,
     TradeHistoryProvider,
     NFTAdminProvider
   } from './context'
