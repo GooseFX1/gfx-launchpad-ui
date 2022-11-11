@@ -81,7 +81,7 @@ export const notify = async (
       const re = /custom program error: (0x\d+)/
       const match = description.toString().match(re)
       if (match) {
-        description = (await import('gfx_stocks_pool')).format_error_code(parseInt(match[0]))
+        // description = (await import('gfx_stocks_pool')).format_error_code(parseInt(match[0]))
       }
     }
   }

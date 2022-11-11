@@ -17,22 +17,23 @@ module.exports = {
   ],
   webpack: {
     configure: (webpackConfig) => {
-      const wasmExtensionRegExp = /\.wasm$/
-      webpackConfig.resolve.extensions.push('.wasm')
       webpackConfig.resolve.extensions.push('.mjs')
-      webpackConfig.module.rules.forEach((rule) => {
-        ;(rule.oneOf || []).forEach((oneOf) => {
-          if (oneOf.loader && oneOf.loader.indexOf('file-loader') >= 0) {
-            oneOf.exclude.push(wasmExtensionRegExp)
-          }
-        })
-      })
 
-      webpackConfig.module.rules.push({
-        test: wasmExtensionRegExp,
-        include: path.resolve(__dirname, 'src'),
-        use: [{ loader: require.resolve('wasm-loader'), options: {} }]
-      })
+      // const wasmExtensionRegExp = /\.wasm$/
+      // webpackConfig.resolve.extensions.push('.wasm')
+      // webpackConfig.module.rules.forEach((rule) => {
+      //   ;(rule.oneOf || []).forEach((oneOf) => {
+      //     if (oneOf.loader && oneOf.loader.indexOf('file-loader') >= 0) {
+      //       oneOf.exclude.push(wasmExtensionRegExp)
+      //     }
+      //   })
+      // })
+
+      // webpackConfig.module.rules.push({
+      //   test: wasmExtensionRegExp,
+      //   include: path.resolve(__dirname, 'src'),
+      //   use: [{ loader: require.resolve('wasm-loader'), options: {} }]
+      // })
 
       webpackConfig.module.rules.push({
         test: /\.mjs$/,
