@@ -4,7 +4,7 @@ import { Progress, Switch } from "antd";
 import { ModalSlide } from "../../../../components/ModalSlide";
 import {
   useUSDCToggle,
-  useNFTLPSelected,
+  useNFTLPSelected
 } from "../../../../context/nft_launchpad";
 import { useNavCollapse } from "../../../../context";
 import { Row, Col } from "antd";
@@ -34,7 +34,6 @@ const ROADMAP_WRAPPER = styled.div`
     height: 5px;
     margin-top: -60px;
     margin-left: 20px;
-    filter: invert(85%) sepia(60%) saturate(323%) hue-rotate(115deg) brightness(89%) contrast(93%);
   }
   .verticalContainer {
     @media (max-width: 500px) {
@@ -558,14 +557,14 @@ const NFT_BORDER = styled.div`
 
 export const MintProgressBar = ({
   minted,
-  totalNFTs,
+  totalNFTs
 }: {
   minted: number;
   totalNFTs: number;
-}) => {
-  let mintPercent = (minted / totalNFTs) * 100;
-  mintPercent = parseFloat(mintPercent.toFixed(0));
-  return (
+}) => (
+  // let mintPercent = (minted / totalNFTs) * 100;
+  // mintPercent = parseFloat(mintPercent.toFixed(0));
+  
     <>
       <ProgressBarBG>
         <Progress
@@ -581,7 +580,7 @@ export const MintProgressBar = ({
       </ProgressBarBG>
     </>
   );
-};
+;
 export const SWITCH_HOLDER = styled.div<{ $navCollapsed: boolean }>`
   position: absolute;
   top: 0;
@@ -594,7 +593,7 @@ export const SWITCH_HOLDER = styled.div<{ $navCollapsed: boolean }>`
 export const InfoDivLightTheme = ({
   items,
   price,
-  currency,
+  currency
 }: {
   items: any;
   price: number;
@@ -633,7 +632,7 @@ export const Socials = () => {
         span={2}
         style={{
           marginRight: checkMobile() ? "16px" : "0",
-          maxWidth: checkMobile() ? "100%" : "",
+          maxWidth: checkMobile() ? "100%" : ""
         }}
       >
         <SOCIAL_ICON onClick={() => window.open(selectedProject?.website)}>
@@ -644,7 +643,7 @@ export const Socials = () => {
         span={2}
         style={{
           marginRight: checkMobile() ? "16px" : "0",
-          maxWidth: checkMobile() ? "100%" : "",
+          maxWidth: checkMobile() ? "100%" : ""
         }}
       >
         <SOCIAL_ICON onClick={() => window.open(selectedProject?.discord)}>
@@ -658,7 +657,7 @@ export const Socials = () => {
         span={2}
         style={{
           marginRight: checkMobile() ? "16px" : "0",
-          maxWidth: checkMobile() ? "100%" : "",
+          maxWidth: checkMobile() ? "100%" : ""
         }}
       >
         <SOCIAL_ICON onClick={() => window.open(selectedProject?.twitter)}>
@@ -753,7 +752,7 @@ const TimerCircle = ({ data }: { data: any }) => (
 
 export const TokenSwitch = ({
   disabled,
-  currency,
+  currency
 }: {
   disabled: boolean;
   currency: string;

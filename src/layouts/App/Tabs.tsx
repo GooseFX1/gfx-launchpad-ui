@@ -151,7 +151,7 @@ export const Tabs: FC<IProps> = (props: IProps): JSX.Element => {
           key={index}
           onMouseEnter={() => setHovered(index)}
           onMouseLeave={() => setHovered(-1)}
-          to={path}
+          to={'/NFTs/launchpad'}
           onClick={() => {
             if (props.mobileToggle) props.mobileToggle()
           }}
@@ -161,7 +161,7 @@ export const Tabs: FC<IProps> = (props: IProps): JSX.Element => {
           <TAB_ICON>
             {(() => {
               const icon =
-                mode === 'dark' ? `/img/assets${path}_icon_dark.svg` : `/img/assets${path}_icon_lite.svg`
+                mode === 'dark' ? `/img/assets/NFTs_icon_dark.svg` : `/img/assets/NFTs_icon_lite.svg`
 
               if (cleanedPathName === path) {
                 if (window?.innerWidth < 500) {
@@ -178,7 +178,7 @@ export const Tabs: FC<IProps> = (props: IProps): JSX.Element => {
             })()}
           </TAB_ICON>
           <LABEL $mode={mode} $hover={cleanedPathName === path}>
-            {path.slice(1)}
+            NFTs
           </LABEL>
         </TAB>
       ))}
