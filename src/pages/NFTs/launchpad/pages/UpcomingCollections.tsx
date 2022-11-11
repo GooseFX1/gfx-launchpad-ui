@@ -233,21 +233,21 @@ const UpcomingCollectins: FC = () => {
     setIsLoading(false)
   }, [upcomoingNFTProjects, isUSDC])
 
-  const getRemaningTime = (item): string => {
-    const startsOn = parseFloat(item.startsOn)
-    const timeDiffrence = startsOn - Date.now()
-    const seconds = Number(timeDiffrence / 1000)
-    const d = Math.floor(seconds / (3600 * 24))
-    const h = Math.floor((seconds % (3600 * 24)) / 3600)
-    const m = Math.floor((seconds % 3600) / 60)
-    const s = Math.floor(seconds % 60)
+  // const getRemaningTime = (item): string => {
+  //   const startsOn = parseFloat(item.startsOn)
+  //   const timeDiffrence = startsOn - Date.now()
+  //   const seconds = Number(timeDiffrence / 1000)
+  //   const d = Math.floor(seconds / (3600 * 24))
+  //   const h = Math.floor((seconds % (3600 * 24)) / 3600)
+  //   const m = Math.floor((seconds % 3600) / 60)
+  //   const s = Math.floor(seconds % 60)
 
-    const dDisplay = d > 0 ? d + (d === 1 ? ' d ' : ' d ') : ''
-    const hDisplay = h > 0 ? h + (h === 1 ? ' h ' : ' h ') : ''
-    const mDisplay = m > 0 ? m + (m === 1 ? ' m ' : ' m ') : ''
-    const sDisplay = s > 0 ? s + (s === 1 ? ' s ' : ' s') : ''
-    return d > 1 ? dDisplay + hDisplay + mDisplay : hDisplay + mDisplay + sDisplay
-  }
+  //   const dDisplay = d > 0 ? d + (d === 1 ? ' d ' : ' d ') : ''
+  //   const hDisplay = h > 0 ? h + (h === 1 ? ' h ' : ' h ') : ''
+  //   const mDisplay = m > 0 ? m + (m === 1 ? ' m ' : ' m ') : ''
+  //   const sDisplay = s > 0 ? s + (s === 1 ? ' s ' : ' s') : ''
+  //   return d > 1 ? dDisplay + hDisplay + mDisplay : hDisplay + mDisplay + sDisplay
+  // }
 
   return (
     <>

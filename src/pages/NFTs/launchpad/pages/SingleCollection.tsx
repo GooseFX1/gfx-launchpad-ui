@@ -1,3 +1,4 @@
+/*  eslint-disable */
 import React, { FC, useEffect, useState } from 'react'
 import { useNFTLPSelected } from '../../../../context/nft_launchpad'
 import styled, { css } from 'styled-components'
@@ -12,7 +13,6 @@ import { useHistory } from 'react-router-dom'
 import tw from 'twin.macro'
 import 'styled-components/macro'
 import { checkMobile } from '../../../../utils'
-import { logData } from '../../../../api'
 
 export const RIGHT_SECTION_TABS = styled.div<{ activeTab: string }>`
   ${({ theme }) => css`
@@ -159,10 +159,6 @@ const COLLECTION_NAME = styled.div`
   ${tw`font-bold text-[55px] leading-[67px] sm:text-[35px] sm:text-center sm:text-white sm:py-0 sm:px-[5%]`}
   color: ${({ theme }) => theme.text7};
 `
-const TAG_LINE = styled.div`
-  ${tw`my-[14px] font-semibold text-3xl sm:mt-0 sm:text-center sm:text-white sm:py-0 sm:px-[5%] sm:text-[20px]`}
-  color: ${({ theme }) => theme.text4};
-`
 const PRICE_SOCIAL = styled.div`
   ${tw`flex flex-row mt-[25px] mb-[35px] sm:justify-evenly`}
 `
@@ -307,7 +303,7 @@ export const SingleCollection: FC = () => {
     ) : (
       <MintStarts time={selectedProject?.whitelist || selectedProject?.startsOn} />
     )
-  let ProgressBar = true ? (
+  const ProgressBar = true ? (
     displayProgressBar
   ) : checkMobile() ? (
     <SkeletonCommon

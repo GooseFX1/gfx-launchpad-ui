@@ -8,11 +8,10 @@ import {
     NavCollapseProvider,
     NFTAdminProvider
   } from './context'
-import { NFTs } from './pages'
 import { GenericNotFound } from './pages/InvalidUrl'
 
-export const Router: FC = () => {
-    return (
+export const Router: FC = () => (
+    (
 
       <BrowserRouter>
         {window.location.pathname === '/' && <Redirect from="/" to="/NFTs/launchpad" />}
@@ -50,4 +49,4 @@ export const Router: FC = () => {
       
       </BrowserRouter>
     )
-  }
+)

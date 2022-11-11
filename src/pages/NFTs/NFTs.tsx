@@ -37,7 +37,6 @@ const BODY_NFT = styled.div<{ $navCollapsed: boolean }>`
 
 export const NFTs: FC = () => {
   const { isCollapsed } = useNavCollapse()
-  const location = useLocation<ILocationState>()
   const { path } = useRouteMatch()
   const { connection } = useConnectionConfig()
   const { connected, publicKey } = useWallet()

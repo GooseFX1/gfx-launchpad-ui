@@ -258,7 +258,7 @@ const EndedCollections: FC = () => {
         src={`${process.env.PUBLIC_URL}/img/assets/home-slider-next.svg`}
         alt="banner-previous"
       />
-    ),
+    )
   };
   const loading = [1, 2, 3, 4, 5];
   const [endedList, setEndedList] = useState([]);

@@ -61,17 +61,6 @@ const WRAPPER = styled(SpaceBetweenDiv)`
   }
 `
 
-const LINK = styled.a`
-  color: ${({ theme }) => theme.secondary4};
-  text-decoration: underline;
-  transition: color ${({ theme }) => theme.mainTransitionTime} ease-in-out;
-
-  &:hover {
-    color: #e180ff;
-    text-decoration: underline;
-  }
-`
-
 export const Footer: FC = () => {
   const [privacyPolicyVisible, setPrivacyPolicyVisible] = useState(false)
   const [termsOfServiceVisible, setTermsOfServiceVisible] = useState(false)

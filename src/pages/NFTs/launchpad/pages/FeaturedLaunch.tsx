@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
 import {
   MintItemViewStatus,
-  INFTMetadata,
+  INFTMetadata
 } from "../../../../types/nft_details";
 import { SkeletonCommon } from "../../Skeleton/SkeletonCommon";
 import { DarkDiv, TokenSwitch, NFTBanner } from "./LaunchpadComponents";
@@ -79,14 +79,6 @@ const TITLE = styled.h1`
     font-size: 35px;
     text-align: center;
   }
-`;
-
-const SUBTITLE = styled.h2`
-  font-weight: 700;
-  font-size: 35px;
-  line-height: 43px;
-  margin: 0;
-  color: ${({ theme }) => theme.text1};
 `;
 
 const LEFT_WRAPPER = styled.div`
